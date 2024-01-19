@@ -1,0 +1,2 @@
+hello this file is created by nodejs!.
+this is a new message will be add to text.txt file.
