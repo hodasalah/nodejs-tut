@@ -1,4 +1,4 @@
-# what is node js ?
+# 2. what is node js ?
 
 ![what is node js ?](images/nodejs.png)
 
@@ -17,7 +17,7 @@
         ![Blocking vs Unblocking I/O](images/blockingVSunblocking.png)
         ![let's see result when running code](images/blockingVSunblocking-2.png)
 
-# Importing Nodejs Core Modules
+# 3. Importing Nodejs Core Modules
 
 1.  -   to import any of node js core modules we user [require] function
 2.  -   to import file system node module we use {require("fs")}
@@ -36,46 +36,63 @@
 2.  -   in utils file you can use `module.exports = {function1,function2}`
 3.  -   in app.js file you can use `const {function1,function2} = require("./utils")`
 
-## [chalkPackage](https://www.npmjs.com/package/chalk)
+### <span style="background-color:#f00; padding:4px">NPM</span>
+
+-   npm is the standard package manager for Node.js.
+-   npm manages downloads of dependencies of your project.
+-   first `npm init -y`
+-   then `npm install {your package}`
+-   let's try some awesome packages
+
+#### [chalkPackage](https://www.npmjs.com/package/chalk)
 
 -   this package used to color your console log messages
--   to install
--   to use
+-   to install [npm i chalk@4.0.0]
+-   this package used to color your console log messages with colors
+-   to use you can try 👇👇👇
 
-    ````js
-        import chalk from 'chalk';
+    ```js
+    const chalk = require('chalk');
+    const log = console.log;
 
-        const log = console.log;
+    // Combine styled and normal strings
+    log(chalk.blue('Hello') + ' World' + chalk.red('!'));
 
-        // Combine styled and normal strings
-        log(chalk.blue('Hello') + ' World' + chalk.red('!'));
+    // Compose multiple styles using the chainable API
+    log(chalk.blue.bgRed.bold('Hello world!'));
 
-        // Compose multiple styles using the chainable API
-        log(chalk.blue.bgRed.bold('Hello world!'));
+    // Pass in multiple arguments
+    log(chalk.blue('Hello', 'World!', 'Foo', 'bar', 'biz', 'baz'));
 
-        // Pass in multiple arguments
-        log(chalk.blue('Hello', 'World!', 'Foo', 'bar', 'biz', 'baz'));
+    // Nest styles
+    log(chalk.red('Hello', chalk.underline.bgBlue('world') + '!'));
 
-        // Nest styles
-        log(chalk.red('Hello', chalk.underline.bgBlue('world') + '!'));
+    // Nest styles of the same type even (color, underline, background)
+    log(
+    	chalk.green(
+    		'I am a green line ' +
+    			chalk.blue.underline.bold('with a blue substring') +
+    			' that becomes green again!',
+    	),
+    );
 
-        // Nest styles of the same type even (color, underline, background)
-        log(chalk.green(
-                'I am a green line ' +
-                chalk.blue.underline.bold('with a blue substring') +
-                ' that becomes green again!'
-        ));
-
-        // ES2015 template literal
-        log(`
+    // ES2015 template literal
+    log(`
         CPU: ${chalk.red('90%')}
         RAM: ${chalk.green('40%')}
         DISK: ${chalk.yellow('70%')}
         `);
 
-        // Use RGB colors in terminal emulators that support it.
-        log(chalk.rgb(123, 45, 67).underline('Underlined reddish color'));
-        log(chalk.hex('#DEADED').bold('Bold gray!'));
+    // Use RGB colors in terminal emulators that support it.
+    log(chalk.rgb(123, 45, 67).underline('Underlined reddish color'));
+    log(chalk.hex('#DEADED').bold('Bold gray!'));
+    ```
 
-          
-    ````
+#### [nodemon](https://www.npmjs.com/package/nodemon)
+
+-   nodemon is a tool that helps develop Node.js based applications by automatically restarting the node application when file changes in the directory are detected.
+-   to install nodemon `npm i nodemon -g`
+-   to be sure that we install it `nodemon -v`
+-   to use `nodemon app.js`
+
+# 4. File system and command line args
