@@ -96,3 +96,58 @@
 -   to use `nodemon app.js`
 
 # 4. File system and command line args
+
+#### [process] it is a big object
+
+-   process.exit()
+-   process.abort()
+-   process.argv
+
+    -   property returns an array containing the command-line arguments passed when the Node.js process was launched.
+
+        1.  -   The first element will be process.execPath. See process.argv0 if access to the original value of argv[0] is needed.
+        2.  -   The second element will be the path to the JavaScript file being executed.
+        3.  -   The remaining elements will be any additional command-line arguments.
+        4.  -   we can use command line arguments like
+
+        5.  -   in your terminal write {`node app.js add --title="this is my new title"`}
+
+        ```js
+        [
+        	'C:\\Program Files\\nodejs\\node.exe',
+        	'C:\\Users\\hodas\\Desktop\\nodejs tutorial\\app.js',
+        	'args',
+        ];
+        ```
+
+        ```js
+        let command = process.argv[2];
+        if (command === 'add') console.log('add new note...');
+        if (command === 'remove') console.log('remove old note...');
+        ```
+
+## How to parse process.argv
+
+-   we will use npm package called `yargs`
+-   to install `npm i yargs`
+-   to use `yargs` and get useful information
+
+```js
+const yargs = require('yargs');
+console.log(yargs.argv);
+//{ _: [ 'add' ], title: 'this is my new title', '$0': 'app.js' }
+```
+
+-   now if we write in terminal `node app.js --help`
+-   we will get 👇👇👇
+
+```js
+Options:
+  --help     Show help                                                 [boolean]
+  --version  Show version number                                       [boolean]
+
+```
+
+-   now let's try `node app.js --version` we will see 👉👉 `1.0.0`
+-   let's try to change version we will use `yargs.version("1.1.1")`
+-   then in terminal let's show version using `node app.js --version`

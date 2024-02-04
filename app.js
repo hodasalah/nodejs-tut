@@ -50,3 +50,15 @@ log(chalk.hex('#DEADED').bold('Bold gray!'));
  * end chalk colors
  * *********************************************************************
  */
+let command = process.argv[2];
+if (command === 'add') console.log('add new note...');
+if (command === 'remove') console.log('remove old note...');
+const yargs = require('yargs');
+console.log(yargs.argv);
+//{ _: [ 'add' ], title: 'this is my new title', '$0': 'app.js' }
+// if we write `node app.js --help` then we will get
+// Options:
+// --help     Show help                                                 [boolean]
+//--version  Show version number                                       [boolean]
+yargs.version('1.1.1'); //1.0.0
+console.log(yargs.argv);
